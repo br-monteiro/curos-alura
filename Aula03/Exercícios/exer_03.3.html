@@ -1,0 +1,17 @@
+<meta charset="UTF-8">
+<script>
+    var pulaLinha = function() {
+        document.write("<br>");
+    };
+    var mostra = function(frase) {
+        document.write(frase);
+        pulaLinha();
+        pulaLinha();
+    };
+    var calculaIMC = function(altura, peso) {
+        return peso / (altura * altura);
+    };
+    
+    var meuImc = calculaIMC(1.68, "a");
+    mostra("Estou distante " + Math.round((35 - meuImc)) + " da obesidade severa!");
+</script>
