@@ -1,0 +1,25 @@
+<meta charset="utf-8">
+<canvas id="tela" width="300" height="450">
+Infelizmente seu navegador não possui suporte para este recurso. =(
+</canvas>
+<script>
+var tela = document.getElementById("tela");
+var context = tela.getContext("2d");
+
+    context.fillStyle = "#F6CE45";
+    context.fillRect(0, 0, 300, 86);
+    
+    context.fillStyle = "#0E418F";
+    context.fillRect(0, 86, 300, 57);
+    
+    context.fillStyle = "#BD3733";
+    context.fillRect(0, 143, 300, 50);
+    
+    context.strokeRect(0,208,300,200);
+    
+    context.fillStyle = "#E95743";
+    context.fillRect(100, 208, 200, 100);
+    
+    context.fillStyle = "#37783E";
+    context.fillRect(100, 308, 200, 100);
+</script>
