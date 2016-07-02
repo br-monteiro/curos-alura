@@ -1,0 +1,27 @@
+<meta charset="utf-8">
+<canvas id="tela" width="600" height="400">
+Infelizmente seu navegador não possui suporte para este recurso. =(
+</canvas>
+<script>
+var tela = document.getElementById("tela");
+var ctx = tela.getContext("2d");
+    ctx.fillStyle = "gray";
+    ctx.fillRect(0, 0, 600, 400);
+
+var color = function () {
+    cor = ["red", "blue", "green", "black", "yellow"];
+    indexColor = Math.round(Math.random() * cor.length);
+    return cor[indexColor];
+};
+
+var atira = function(evento) {
+    var x = evento.pageX - tela.offsetLeft;
+    var y = evento.pageY - tela.offsetTop;
+    ctx.fillStyle = color();
+    ctx.beginPath();
+    ctx.arc(x, y, 5, 0, 2 * Math.PI);
+    ctx.fill();
+};
+
+tela.onclick = atira;
+</script>
