@@ -1,0 +1,37 @@
+<meta charset="utf-8">
+<canvas id="tela" width="600" height="400">
+Infelizmente seu navegador não possui suporte para este recurso. =(
+</canvas>
+<script>
+var x = 0;
+var y = 10;
+var w = 600;
+
+var tela = document.getElementById("tela");
+var ctx = tela.getContext("2d");
+var img = new Image();
+    img.src = "bola_futebol.png";
+    img.width = "10";
+    img.height = "10";
+  
+var desenha = function () {
+    if (x > w) {
+        y += 20;
+        x = 0;
+        if (y > 400) {
+            y = 0;
+        }
+    }
+    
+    limpaTela();
+    
+    ctx.drawImage(img, x, y);
+    x += 3;
+};
+
+var limpaTela = function() {
+    ctx.clearRect(0, 0, 600, 400);
+};
+
+setInterval(desenha, 10);
+</script>

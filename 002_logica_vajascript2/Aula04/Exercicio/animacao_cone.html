@@ -1,0 +1,36 @@
+<meta charset="utf-8">
+<canvas id="tela" width="600" height="400">
+Infelizmente seu navegador não possui suporte para este recurso. =(
+</canvas>
+<script>
+var tela = document.getElementById("tela");
+var ctx = tela.getContext("2d");
+    ctx.fillStyle = "gray";
+    ctx.fillRect(0, 0, 600, 400);
+var x = 0;
+var direcao = true;
+
+var cor = "red";
+var desenha = function () {
+    
+    ctx.fillStyle = cor;
+    ctx.beginPath();
+    ctx.arc(x, 200, x / 3, 0, 2 * Math.PI);
+    ctx.fill();
+    
+    if (direcao) {
+        x += 10;
+        if (x > 600) {
+            direcao = false;
+        }
+    } else {
+        x -= 10;
+        cor = "blue";
+        if (x <= 0) {
+            direcao = true;
+            cor = "red"
+        }
+    }
+};
+setInterval(desenha, 1);
+</script>
