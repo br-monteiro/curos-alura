@@ -1,0 +1,72 @@
+<meta charset="utf-8">
+<canvas id="tela" width="600" height="400">
+Infelizmente seu navegador não possui suporte para este recurso. =(
+</canvas>
+<script>
+var tela = document.getElementById("tela");
+var xAlvo = 300;
+var yAlvo = 200;
+var color = "";
+var cor = function(c) {
+    color = c;
+};
+
+var ctx = tela.getContext("2d");
+var areaJogo = function() {
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(0, 0, 600, 400);
+    ctx.fillStyle = "#F5F5F5";
+    ctx.fillRect(0, 0, 600, 400);
+}
+
+var limpaTela = function() {
+    ctx.clearRect(0, 0, 600, 400);
+    areaJogo();
+};
+
+var circulo = function(x, y, raio) {
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.arc(x, y, raio, 0, 2 * Math.PI)
+    ctx.fill();
+};
+
+var desenhaAlvo = function(x, y) {
+    var raio = 40;
+    cor("black");
+    circulo(x, y, raio + 1);
+    cor("white");
+    circulo(x, y, raio);
+    cor("red");
+    circulo(x, y, raio  -10);
+    cor("white");
+    circulo(x, y, raio - 20);
+    cor("red");
+    circulo(x, y, raio - 30);
+};
+
+var verificaClick = function(evento) {
+    var precisao = 40;
+    var x = evento.pageX - tela.offsetLeft;
+    var y = evento.pageY - tela.offsetTop;
+    var posicoesX = [x - precisao, x + precisao];
+    var posicoesY = [y - precisao, y + precisao];
+    console.log("xAlvo= " + xAlvo + ", yAlvo= " + yAlvo);
+    if ((xAlvo >= posicoesX[0] && xAlvo <= posicoesX[1]) && (yAlvo >= posicoesY[0] && yAlvo <= posicoesY[1])) {
+        alert("Você acertou o alvo!");
+        mudaAlvo();
+    }
+};
+
+var mudaAlvo = function() {
+    xAlvo = Math.round(Math.random() * 600);
+    yAlvo = Math.round(Math.random() * 400);
+    limpaTela();
+    desenhaAlvo(xAlvo, yAlvo);
+    
+};
+    
+tela.onclick = verificaClick;
+
+setInterval(mudaAlvo, 1000);
+</script>
