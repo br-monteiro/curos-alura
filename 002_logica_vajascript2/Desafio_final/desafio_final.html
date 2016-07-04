@@ -38,7 +38,7 @@ var desenhaAlvo = function(x, y) {
     cor("white");
     circulo(x, y, raio);
     cor("red");
-    circulo(x, y, raio  -10);
+    circulo(x, y, raio - 10);
     cor("white");
     circulo(x, y, raio - 20);
     cor("red");
@@ -46,7 +46,7 @@ var desenhaAlvo = function(x, y) {
 };
 
 var verificaClick = function(evento) {
-    var precisao = 40;
+    var precisao = 30;
     var x = evento.pageX - tela.offsetLeft;
     var y = evento.pageY - tela.offsetTop;
     var posicoesX = [x - precisao, x + precisao];
@@ -69,4 +69,6 @@ var mudaAlvo = function() {
 tela.onclick = verificaClick;
 
 setInterval(mudaAlvo, 1000);
+
+mudaAlvo();
 </script>
